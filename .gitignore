@@ -19,3 +19,8 @@
 /.settings
 /.project
 /.buildpath
+
+# Ignore package files.
+/node_modules
+/vendor
+/composer.lock
