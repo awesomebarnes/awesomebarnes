@@ -54,7 +54,14 @@ module.exports = function(grunt) {
     devserver: {
       server: {
         options: {
-          base: "./public/"
+          base: "./public/",
+          async: true
+        }
+      },
+      watch: {
+        options: {
+          base: "./public/",
+          async: false
         }
       }
     }
@@ -70,5 +77,6 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['clean', 'mkdir', 'less', 'copyto']);
+  grunt.registerTask('watchserver', ['devserver:watch', 'watch']);
 
 };
