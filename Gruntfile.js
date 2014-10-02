@@ -52,7 +52,11 @@ module.exports = function(grunt) {
       }
     },
     devserver: {
-      server: {}
+      server: {
+        options: {
+          base: "./public/"
+        }
+      }
     }
   });
 
