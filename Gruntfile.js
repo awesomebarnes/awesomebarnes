@@ -50,6 +50,9 @@ module.exports = function(grunt) {
         files: ['js/**', 'lib/**'],
         tasks: ['copyto:development']
       }
+    },
+    devserver: {
+      server: {}
     }
   });
 
@@ -59,6 +62,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-devserver');
 
   // Default task.
   grunt.registerTask('default', ['clean', 'mkdir', 'less', 'copyto']);
