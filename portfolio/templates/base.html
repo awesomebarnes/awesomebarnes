@@ -1,0 +1,104 @@
+{% load i18n staticfiles compress %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <title>{% block page_title %}{% trans "Awesome Barnes, LLC" %}{% endblock %}</title>
+	<meta name="description" content="{% block page_description %}{% endblock %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block site_css %}{% endblock %}
+
+	<!-- jQuery Version 1.11.0 -->
+	<script src="js/jquery-1.11.0.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="js/classie.js"></script>
+	<script src="js/cbpAnimatedHeader.js"></script>
+
+	<!-- Contact Form JavaScript -->
+	<script src="js/jqBootstrapValidation.js"></script>
+	<script src="js/contact_me.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="js/agency.js"></script>
+
+	<!-- Custom JavaScript -->
+	<script src="js/core.js"></script>
+
+	<!-- Page-specific JavaScript -->
+  {% block site_js %}{% endblock %}
+</head>
+<body>
+	<!-- Navigation -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand page-scroll" href="{{ home_url|default:"/" }}"><img src="./img/awesomebarnes-reversed.png"></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="hidden"><a href="{{ home_url|default:"/" }}"></a></li>
+					{% block navigation_items %}{% endblock %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Messages -->
+  {% if messages %}
+    <div class="container-fluid">
+      {% for message in messages %}
+        <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="{% trans "Close" %}"><span aria-hidden="true">&times;</span></button>
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <header>
+		{% block header %}{% endblock %}
+  </header>
+
+  {% block content %}{% endblock content %}
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<span class="copyright">Copyright &copy; Awesome Barnes, LLC 2014</span>
+				</div>
+				<div class="col-md-4">
+					<ul class="list-inline social-buttons">
+						<li><a href="https://bitbucket.org/barnesconsulting" target="_blank"><i class="entypo-bucket"></i></a></li>
+						<li><a href="http://www.facebook.com/AwesomeBarnesConsulting" target="_blank"><i class="fontawesome-facebook-sign"></i></a></li>
+						<li><a href="https://www.elance.com/s/scottbarnes/" target="_blank"><i class="fontawesome-globe"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<ul class="list-inline quicklinks">
+						<li><a href="#privacyModal" class="portfolio-link" data-toggle="modal">Privacy Policy</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	{% include "privacy_modal.html" %}
+
+	{% block modals %}{% endblock %}
+</body>
+</html>
