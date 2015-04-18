@@ -68,3 +68,6 @@ target/
 
 # Node.js package files
 node_modules/
+
+# Cached and collected static files
+/static/

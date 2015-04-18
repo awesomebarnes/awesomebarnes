@@ -3,36 +3,43 @@
 <html>
 <head>
 	<meta charset="utf-8">
-  <title>{% block page_title %}{% trans "Awesome Barnes, LLC" %}{% endblock %}</title>
+  <title>{% block page_title %}{% trans 'Awesome Barnes, LLC' %}{% endblock %}</title>
 	<meta name="description" content="{% block page_description %}{% endblock %}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	{% compress css %}
+		<link rel="stylesheet" type="text/less" href="{% static 'less/core.less' %}">
+	{% endcompress %}
+
 	{% block site_css %}{% endblock %}
 
-	<!-- jQuery Version 1.11.0 -->
-	<script src="js/jquery-1.11.0.js"></script>
+	{% compress js %}
+		<!-- jQuery Version 1.11.0 -->
+		<script src="{% static 'js/jquery-1.11.0.js' %}"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+		<!-- Bootstrap Core JavaScript -->
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
 
-	<!-- Plugin JavaScript -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="js/classie.js"></script>
-	<script src="js/cbpAnimatedHeader.js"></script>
+		<!-- Plugin JavaScript -->
+		<script src="{% static 'js/jquery.easing.min.js' %}"></script>
+		<script src="{% static 'js/classie.js' %}"></script>
+		<script src="{% static 'js/cbpAnimatedHeader.js' %}"></script>
 
-	<!-- Contact Form JavaScript -->
-	<script src="js/jqBootstrapValidation.js"></script>
-	<script src="js/contact_me.js"></script>
+		<!-- Contact Form JavaScript -->
+		<script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+		<script src="{% static 'js/contact_me.js' %}"></script>
 
-	<!-- Custom Theme JavaScript -->
-	<script src="js/agency.js"></script>
+		<!-- Custom Theme JavaScript -->
+		<script src="{% static 'js/agency.js' %}"></script>
 
-	<!-- Custom JavaScript -->
-	<script src="js/core.js"></script>
+		<!-- Custom JavaScript -->
+		<script src="{% static 'js/core.js' %}"></script>
+	{% endcompress %}
 
 	<!-- Page-specific JavaScript -->
   {% block site_js %}{% endblock %}
 </head>
-<body>
+<body id="page-top">
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
@@ -44,13 +51,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand page-scroll" href="{{ home_url|default:"/" }}"><img src="./img/awesomebarnes-reversed.png"></a>
+				<a class="navbar-brand page-scroll" href="{{ home_url|default:'/' }}"><img src="{% static 'img/awesomebarnes-reversed.png' %}"></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="hidden"><a href="{{ home_url|default:"/" }}"></a></li>
+					<li class="hidden"><a href="{{ home_url|default:'/' }}"></a></li>
 					{% block navigation_items %}{% endblock %}
 				</ul>
 			</div>

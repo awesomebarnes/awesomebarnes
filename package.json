@@ -1,6 +1,6 @@
 {
   "name": "awesomebarnes",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "description": "Awesome Barnes, LLC website",
   "repository": "https://bitbucket.org/barnesconsulting/awesomebarnes",
   "keywords": [
@@ -9,15 +9,8 @@
   ],
   "author": "T. Scott Barnes <barnes.t.scott@gmail.com>",
   "license": "Other",
-  "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-less": "~0.8.2",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-mkdir": "~0.1.1",
-    "grunt-copy-to": "0.0.10",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-devserver": "~0.6.0"
+  "dependencies": {
+    "coffee-script": "^1.9.2",
+    "less": "^2.5.0"
   }
 }

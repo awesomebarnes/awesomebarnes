@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'compressor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -102,8 +103,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Compressor settings
+COMPRESS_PRECOMPILERS = (
+    ('text/coffeescript', os.path.join(BASE_DIR, 'node_modules', '.bin', 'coffee') + ' --compile --stdio'),
+    ('text/less', os.path.join(BASE_DIR, 'node_modules', '.bin', 'lessc') + ' {infile} {outfile}'),
+    #('text/x-sass', 'sass {infile} {outfile}'),
+    #('text/x-scss', 'sass --scss {infile} {outfile}'),
+)
 
 # Import local settings
 try:
