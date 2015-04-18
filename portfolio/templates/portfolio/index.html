@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n staticfiles compress %}
+{% load i18n staticfiles compress thumbnail %}
 
 {% block navigation_items %}
 	<li class="hidden"><a href="#page-top"></a></li>
@@ -80,65 +80,24 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">The Awesome Barnes'</h2>
-					<h3 class="section-subheading text-muted">The faces behind the
-						code.</h3>
+					<h2 class="section-heading">{% trans "The Awesome Barnes'" %}</h2>
+					<h3 class="section-subheading text-muted">{% trans "The faces behind the code." %}</h3>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-4">
-					<div class="team-member">
-						<img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-						<h4>Jennifer Barnes</h4>
-						<p class="text-muted">User Interface Specialist/Owner</p>
-						<ul class="list-inline social-buttons">
-							<li><a href="https://github.com/msmarcel" target="_blank"><i
-									class="fontawesome-github"></i></a></li>
-							<li><a href="http://www.linkedin.com/in/jneighbors/"
-								target="_blank"><i class="fontawesome-linkedin-sign"></i></a></li>
-							<li><a href="https://www.behance.net/jlbarnes"
-								target="_blank"><i class="entypo-behance"></i></a></li>
-						</ul>
+				{% for team_member in team_members %}
+					<div class="col-sm-4">
+						{% include "portfolio/team_member.html" with object=team_member %}
 					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="team-member">
-						<img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
-						<h4>T. Scott Barnes</h4>
-						<p class="text-muted">Open Source Expert/Owner</p>
-						<ul class="list-inline social-buttons">
-							<li><a href="https://github.com/tsbarnes" target="_blank"><i
-									class="fontawesome-github"></i></a></li>
-							<li><a href="http://www.linkedin.com/in/tsbarnes"
-								target="_blank"><i class="fontawesome-linkedin-sign"></i></a></li>
-							<li><a href="https://bitbucket.org/tsbarnes" target="_blank"><i
-									class="entypo-bucket"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="team-member">
-						<img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
-						<h4>Charles Barnes</h4>
-						<p class="text-muted">Baby</p>
-						<ul class="list-inline social-buttons" target="_blank">
-							<li><a target="_blank" href="http://www.reddit.com/r/aww"><i
-									class="fontawesome-star-empty"></i></a></li>
-						</ul>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 text-center">
-					<p class="large text-muted">T. Scott Barnes is a programmer
-						with over a decade of experience in open source development using
-						C and C++, as well as experience in web design and development,
-						team management, version control, and testing.</p>
-					<p class="large text-muted">Jennifer Barnes is a
-						designer/developer with strong user experience (UX) and user
-						interface (UI) skills, as well as over a decade of experience with
-						Java, years of experience with PHP, as well as with graphic and
-						logo design.</p>
+					{% for team_member in team_members %}
+						{% if team_member.description %}
+							<p class="large text-muted">{{ team_member.description }}</p>
+						{% endif %}
+					{% endfor %}
 				</div>
 			</div>
 		</div>
@@ -173,9 +132,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">Contact Us</h2>
-					<h3 class="section-subheading text-muted">Let us help you
-						build your business.</h3>
+					<h2 class="section-heading">{% trans "Contact Us" %}</h2>
+					<h3 class="section-subheading text-muted">{% trans "Let us help you build your business." %}</h3>
 				</div>
 			</div>
 			<div class="row">
@@ -212,7 +170,7 @@
 							<div class="clearfix"></div>
 							<div class="col-lg-12 text-center">
 								<div id="success"></div>
-								<button type="submit" class="btn btn-xl">Send Message</button>
+								<button type="submit" class="btn btn-xl">{% trans "Send Message" %}</button>
 							</div>
 						</div>
 					</form>

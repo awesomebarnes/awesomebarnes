@@ -1,0 +1,12 @@
+{% load i18n staticfiles compress thumbnail %}
+
+<div class="team-member">
+	<img src="{% thumbnail object.image 225x225 crop %}" class="img-responsive img-circle" alt="{{ object.name }}">
+	<h4>{{ object.name }}</h4>
+	<p class="text-muted">{{ object.caption }}</p>
+	<ul class="list-inline social-buttons">
+		{% for link in object.social_link_set.all %}
+			<li><a href="{{ link.url }}" target="_blank"><i class="{{ link.icon_class }}"></i></a></li>
+		{% endfor %}
+	</ul>
+</div>
