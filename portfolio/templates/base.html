@@ -12,32 +12,6 @@
 	{% endcompress %}
 
 	{% block site_css %}{% endblock %}
-
-	{% compress js %}
-		<!-- jQuery Version 1.11.0 -->
-		<script src="{% static 'js/jquery-1.11.0.js' %}"></script>
-
-		<!-- Bootstrap Core JavaScript -->
-		<script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-		<!-- Plugin JavaScript -->
-		<script src="{% static 'js/jquery.easing.min.js' %}"></script>
-		<script src="{% static 'js/classie.js' %}"></script>
-		<script src="{% static 'js/cbpAnimatedHeader.js' %}"></script>
-
-		<!-- Contact Form JavaScript -->
-		<script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
-		<script src="{% static 'js/contact_me.js' %}"></script>
-
-		<!-- Custom Theme JavaScript -->
-		<script src="{% static 'js/agency.js' %}"></script>
-
-		<!-- Custom JavaScript -->
-		<script src="{% static 'js/core.js' %}"></script>
-	{% endcompress %}
-
-	<!-- Page-specific JavaScript -->
-  {% block site_js %}{% endblock %}
 </head>
 <body id="page-top">
 	<!-- Navigation -->
@@ -107,5 +81,31 @@
 	{% include "privacy_modal.html" %}
 
 	{% block modals %}{% endblock %}
+
+	{% compress js %}
+		<!-- jQuery Version 1.11.0 -->
+		<script src="{% static 'js/jquery-1.11.0.js' %}"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="{% static 'js/jquery.easing.min.js' %}"></script>
+		<script src="{% static 'js/classie.js' %}"></script>
+		<script src="{% static 'js/cbpAnimatedHeader.js' %}"></script>
+
+		<!-- Contact Form JavaScript -->
+		<script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+		<script src="{% static 'js/contact_me.js' %}"></script>
+
+		<!-- Custom Theme JavaScript -->
+		<script src="{% static 'js/agency.js' %}"></script>
+
+		<!-- Custom JavaScript -->
+		<script src="{% static 'js/core.js' %}"></script>
+	{% endcompress %}
+
+	<!-- Page-specific JavaScript -->
+  {% block site_js %}{% endblock %}
 </body>
 </html>
