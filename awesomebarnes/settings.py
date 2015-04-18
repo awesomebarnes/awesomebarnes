@@ -41,7 +41,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
+    'filer',
+    'mptt',
+    'easy_thumbnails',
+    'adminsortable',
 )
+
+MIGRATION_MODULES = {
+    'filer': 'filer.migrations_django',
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

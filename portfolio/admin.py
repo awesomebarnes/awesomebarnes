@@ -1,3 +1,8 @@
 from django.contrib import admin
+from adminsortable.admin import SortableAdmin
+from .models import PortfolioItem
 
-# Register your models here.
+class PortfolioItemAdmin(SortableAdmin):
+    model = PortfolioItem
+
+admin.site.register(PortfolioItem, PortfolioItemAdmin)
