@@ -48,7 +48,7 @@ INSTALLED_APPS = (
 )
 
 MIGRATION_MODULES = {
-    'filer': 'filer.migrations_django',
+    # 'filer': 'filer.migrations_django',
 }
 
 MIDDLEWARE_CLASSES = (
@@ -121,11 +121,15 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Compressor settings
+COFFEE_BIN = os.path.join(BASE_DIR, 'node_modules', '.bin', 'coffee')
+LESSC_BIN = os.path.join(BASE_DIR, 'node_modules', '.bin', 'lessc')
+SASS_BIN = os.path.join(BASE_DIR, 'node_modules', '.bin', 'sass')
+
 COMPRESS_PRECOMPILERS = (
-    ('text/coffeescript', os.path.join(BASE_DIR, 'node_modules', '.bin', 'coffee') + ' --compile --stdio'),
-    ('text/less', os.path.join(BASE_DIR, 'node_modules', '.bin', 'lessc') + ' {infile} {outfile}'),
-    #('text/x-sass', 'sass {infile} {outfile}'),
-    #('text/x-scss', 'sass --scss {infile} {outfile}'),
+    ('text/coffeescript', COFFEE_BIN + ' --compile --stdio'),
+    ('text/less', LESSC_BIN + ' {infile} {outfile}'),
+    ('text/x-sass', SASS_BIN + ' {infile} {outfile}'),
+    ('text/x-scss', SASS_BIN + ' --scss {infile} {outfile}'),
 )
 
 # Import local settings
