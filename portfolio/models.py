@@ -1,8 +1,27 @@
-from django.db.models import CharField, TextField, ForeignKey
+from django.db.models import (
+    CharField, TextField, ForeignKey, URLField)
 from adminsortable.models import Sortable
 from adminsortable.fields import SortableForeignKey
 from autoslug import AutoSlugField
 from filer.fields.image import FilerImageField
+
+
+class Service(Sortable):
+    slug = AutoSlugField(populate_from='name')
+    name = CharField(max_length=50, blank=False, null=False)
+    description = TextField(max_length=1000, blank=True, null=True)
+    icon = CharField(max_length=100, blank=False, null=False,
+                     default="fontawesome-desktop")
+
+    class Meta(Sortable.Meta):
+        verbose_name = "Service"
+        verbose_name_plural = "Services"
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.__str__()
 
 
 class PortfolioItem(Sortable):
@@ -45,7 +64,7 @@ class SocialLink(Sortable):
     slug = AutoSlugField(populate_from='name', unique_with='team_member')
     name = CharField(max_length=50, blank=False, null=False)
     team_member = SortableForeignKey('TeamMember', blank=True, null=True)
-    url = CharField(max_length=250, blank=True, null=True)
+    url = URLField(max_length=250, blank=True, null=True)
     icon_class = CharField(max_length=100, blank=True, null=True)
 
     class Meta(Sortable.Meta):
@@ -55,6 +74,23 @@ class SocialLink(Sortable):
     def __str__(self):
         if self.team_member:
             return self.team_member.name + ": " + self.name
+        return self.name
+
+    def __unicode__(self):
+        return self.__str__()
+
+
+class Client(Sortable):
+    slug = AutoSlugField(populate_from='name')
+    name = CharField(max_length=50, blank=False, null=False)
+    url = URLField(max_length=250, blank=True, null=True)
+    image = FilerImageField(null=True, blank=True)
+
+    class Meta(Sortable.Meta):
+        verbose_name = "Client"
+        verbose_name_plural = "Clients"
+
+    def __str__(self):
         return self.name
 
     def __unicode__(self):
