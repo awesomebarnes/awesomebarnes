@@ -32,8 +32,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'portfolio',
-    'material',
-    'material.admin',
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,6 +121,9 @@ STATICFILES_FINDERS = [
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Compressor settings
 COFFEE_BIN = os.path.join(BASE_DIR, 'node_modules', '.bin', 'coffee')
