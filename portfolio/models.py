@@ -63,9 +63,10 @@ class TeamMember(Sortable):
 class SocialLink(Sortable):
     slug = AutoSlugField(populate_from='name', unique_with='team_member')
     name = CharField(max_length=50, blank=False, null=False)
-    team_member = SortableForeignKey('TeamMember', blank=True, null=True)
-    url = URLField(max_length=250, blank=True, null=True)
-    icon_class = CharField(max_length=100, blank=True, null=True)
+    team_member = SortableForeignKey('TeamMember', blank=False, null=False)
+    url = URLField(max_length=250, blank=False, null=False)
+    icon_class = CharField(max_length=100, blank=False, null=False,
+                           default="fontawesome-at")
 
     class Meta(Sortable.Meta):
         verbose_name = "Social link"
