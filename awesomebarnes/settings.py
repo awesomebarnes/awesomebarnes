@@ -36,9 +36,35 @@ except IOError:
         Exception('Please create a %s file for secret key!' % SECRET_FILE)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+try:
+    from .local_settings import DEBUG
+except ImportError:
+    DEBUG = True
 
-ALLOWED_HOSTS = []
+TEMPLATE_DEBUG = DEBUG
+
+
+# Email settings
+try:
+    from .local_settings import ALLOWED_HOSTS
+except ImportError:
+    ALLOWED_HOSTS = []
+
+try:
+    from .local_settings import EMAIL_HOST
+except ImportError:
+    EMAIL_HOST = 'localhost'
+
+try:
+    from .local_settings import EMAIL_PORT
+except ImportError:
+    EMAIL_PORT = 25
+
+try:
+    from .local_settings import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
+except ImportError:
+    EMAIL_HOST_USER = None
+    EMAIL_HOST_PASSWORD = None
 
 
 # Application definition
@@ -61,10 +87,6 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'adminsortable',
 )
-
-MIGRATION_MODULES = {
-    # 'filer': 'filer.migrations_django',
-}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -101,12 +123,16 @@ WSGI_APPLICATION = 'awesomebarnes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+try:
+    from .local_settings import DATABASES
+except ImportError:
+    DATABASES = {
+        'default':
+            {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            }
+        }
 
 
 # Internationalization
