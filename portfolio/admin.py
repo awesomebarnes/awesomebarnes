@@ -1,5 +1,5 @@
 from django.contrib import admin
-from adminsortable.admin import SortableAdmin
+from adminsortable.admin import SortableAdmin, SortableStackedInline
 from .models import (
     Service, PortfolioItem, TeamMember, SocialLink, Client)
 
@@ -12,12 +12,13 @@ class PortfolioItemAdmin(SortableAdmin):
     model = PortfolioItem
 
 
+class SocialLinkInline(SortableStackedInline):
+    model = SocialLink
+
+
 class TeamMemberAdmin(SortableAdmin):
     model = TeamMember
-
-
-class SocialLinkAdmin(SortableAdmin):
-    model = SocialLink
+    inlines = [SocialLinkInline]
 
 
 class ClientAdmin(SortableAdmin):
@@ -26,5 +27,4 @@ class ClientAdmin(SortableAdmin):
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(PortfolioItem, PortfolioItemAdmin)
 admin.site.register(TeamMember, TeamMemberAdmin)
-admin.site.register(SocialLink, SocialLinkAdmin)
 admin.site.register(Client, ClientAdmin)

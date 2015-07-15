@@ -32,28 +32,11 @@
 				</div>
 			</div>
 			<div class="row text-center">
-				<div class="col-md-4">
-					<h1 class="fontawesome-desktop"></h1>
-					<h4 class="service-heading">Software Development</h4>
-					<p class="text-muted">We develop custom software applications,
-						and create custom Linux distributions. We can also develop custom
-						browser extensions to interact with your site or another existing
-						API.</p>
-				</div>
-				<div class="col-md-4">
-					<h1 class="fontawesome-globe"></h1>
-					<h4 class="service-heading">Web Applications</h4>
-					<p class="text-muted">We have experience with Zend Framework 2,
-						Django, AngularJS, Ruby on Rails, Apache Struts, CouchCMS,
-						Wordpress, jQuery, HTML5, CSS3, Javascript, Python, PHP, Java, and
-						more!</p>
-				</div>
-				<div class="col-md-4">
-					<h1 class="entypo-palette"></h1>
-					<h4 class="service-heading">Graphic Design</h4>
-					<p class="text-muted">Need a logo or some custom artwork? We
-						offer a variety of custom graphic design solutions.</p>
-				</div>
+				{% for service in services %}
+					<div class="col-md-4">
+						{% include "portfolio/service.html" with object=service %}
+					</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
@@ -107,23 +90,11 @@
 	<aside class="clients bg-light-gray">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4 col-sm-6">
-					<a href="http://www.foranything.com" target="_blank"> <img
-						src="img/logos/foranything.png"
-						class="img-responsive img-centered" alt="">
-					</a>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<a href="http://www.elance.com/s/scottbarnes" target="_blank">
-						<img src="img/logos/elance.png"
-						class="img-responsive img-centered" alt="">
-					</a>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<a href="http://www.modernui.com" target="_blank"> <img
-						src="img/logos/mui.png" class="img-responsive img-centered" alt="">
-					</a>
-				</div>
+				{% for client in clients %}
+					<div class="col-md-4 col-sm-6">
+						{% include "portfolio/client.html" with object=client %}
+					</div>
+				{% endfor %}
 			</div>
 		</div>
 	</aside>
