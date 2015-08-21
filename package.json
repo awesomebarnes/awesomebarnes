@@ -10,7 +10,7 @@
   "author": "T. Scott Barnes <barnes.t.scott@gmail.com>",
   "license": "Other",
   "dependencies": {
-    "coffee-script": "^1.9.2",
-    "less": "^2.5.0"
+    "coffee-script": "1.9.*",
+    "less": "2.5.*"
   }
 }
