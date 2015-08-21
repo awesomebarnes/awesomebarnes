@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     'mptt',
     'easy_thumbnails',
     'adminsortable',
+    'django_nose',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -118,7 +119,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'awesomebarnes.wsgi.application'
-
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
