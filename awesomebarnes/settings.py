@@ -41,8 +41,6 @@ try:
 except ImportError:
     DEBUG = True
 
-TEMPLATE_DEBUG = DEBUG
-
 
 # Email settings
 try:
@@ -108,6 +106,7 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
