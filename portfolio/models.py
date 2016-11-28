@@ -27,7 +27,8 @@ class Service(Sortable):
 class PortfolioItem(Sortable):
     slug = AutoSlugField(populate_from='name')
     name = CharField(max_length=50, blank=False, null=False)
-    caption = CharField(max_length=250, blank=True, null=True)
+    caption = CharField(max_length=100, blank=True, null=True)
+    headline = CharField(max_length=250, blank=True, null=True)
     image = FilerImageField(null=True, blank=True)
     description = TextField(max_length=1000, blank=True, null=True)
 
