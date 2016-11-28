@@ -13,7 +13,11 @@
 	<div class="container">
 		<div class="intro-text">
 			<div class="intro-lead-in">{% trans 'Welcome To The Awesome Barnes Consulting!' %}</div>
-			<div class="intro-heading">{% trans 'A mom & pop software engineer team.' %}</div>
+			<div class="intro-heading">
+				{% trans 'A mom &' %}
+				<s class="text-danger"><span style="color: white;">{% trans 'pop' %}</span></s>
+				{% trans 'mom software engineer team.' %}
+			</div>
 			<a href="#services" class="page-scroll btn btn-xl">{% trans 'Tell Me More' %}</a>
 		</div>
 	</div>
