@@ -17,7 +17,9 @@
 							<h2>{{ object.name }}</h2>
 							<p class="item-intro text-muted">{{ object.headline }}</p>
 							<img class="img-responsive img-centered" src="{% thumbnail object.image 600x500 %}" alt="Screenshot">
+							{% autoescape off %}
 							<p>{{ object.description }}</p>
+							{% endautoescape %}
 							<button type="button" class="btn btn-primary" data-dismiss="modal">
 								<icon class="fontawesome-remove"></icon> Close Project
 							</button>
