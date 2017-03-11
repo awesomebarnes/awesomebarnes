@@ -97,3 +97,18 @@ class Client(Sortable):
 
     def __unicode__(self):
         return self.__str__()
+
+class PrivacyPolicy(Sortable):
+    slug = AutoSlugField(populate_from='name')
+    name = CharField(max_length=200, blank=True, null=True)
+    html = TextField(max_length=1000, blank=True, null=True)
+
+    class Meta(Sortable.Meta):
+        verbose_name = "Privacy Policy"
+        verbose_name_plural = "Privacy Policies"
+    
+    def __str__(self):
+        return self.name
+    
+    def __unicode__(self):
+        return self.__str__()

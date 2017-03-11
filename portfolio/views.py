@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView
-from .models import Service, PortfolioItem, TeamMember, Client
+from django.views.generic import TemplateView, DetailView
+from .models import Service, PortfolioItem, TeamMember, Client, PrivacyPolicy
 
 
 class PortfolioView(TemplateView):
@@ -13,3 +13,7 @@ class PortfolioView(TemplateView):
         context["team_members"] = TeamMember.objects.all()
         context["clients"] = Client.objects.all()
         return context
+
+
+class PrivacyView(DetailView):
+    model = PrivacyPolicy
