@@ -101,7 +101,7 @@ class Client(Sortable):
 class PrivacyPolicy(Sortable):
     slug = AutoSlugField(populate_from='name')
     name = CharField(max_length=200, blank=True, null=True)
-    html = TextField(max_length=1000, blank=True, null=True)
+    html = TextField(max_length=10000, blank=True, null=True)
 
     class Meta(Sortable.Meta):
         verbose_name = "Privacy Policy"
